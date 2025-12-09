@@ -215,6 +215,18 @@ Edit `templates/index.html` to customize:
 
 MIT License - feel free to use and modify for your projects.
 
+## 💖 Support
+
+If you find this project helpful, please consider:
+
+<div align="center">
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/JustInCache)
+[![Star on GitHub](https://img.shields.io/badge/Star%20on%20GitHub-181717?style=for-the-badge&logo=github)](https://github.com/JustInCache/openai-chatbot)
+[![Follow](https://img.shields.io/badge/Follow-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://github.com/JustInCache)
+
+</div>
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit issues or pull requests.
