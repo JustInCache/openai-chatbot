@@ -7,6 +7,16 @@ A modern, feature-rich desktop chatbot application powered by Azure OpenAI. Buil
 ![Azure OpenAI](https://img.shields.io/badge/Azure-OpenAI-orange.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
+## 🎬 Demo
+
+https://github.com/user-attachments/assets/media/recordings/recording.mov
+
+<video src="media/recordings/recording.mov" width="100%" controls autoplay muted loop>
+  Your browser does not support the video tag.
+</video>
+
+> *See the chatbot in action - modern UI, real-time responses, and session management*
+
 ## Features
 
 - **Modern Dark UI** - Sleek, responsive interface with purple/indigo accents and ambient gradients
@@ -189,6 +199,20 @@ Edit `templates/index.html` to customize:
 - Fonts (Google Fonts link)
 - Layout (Flexbox-based)
 - Number of saved sessions (`MAX_SESSIONS` in JavaScript)
+
+## Screenshots
+
+<p align="center">
+  <img src="media/images/img01.png" alt="Chat Interface" width="80%">
+</p>
+<p align="center"><em>Main chat interface with sidebar navigation</em></p>
+
+<br>
+
+<p align="center">
+  <img src="media/images/img02.png" alt="Chat Session" width="80%">
+</p>
+<p align="center"><em>Active conversation with AI responses</em></p>
 
 ## License
 
