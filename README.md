@@ -6,6 +6,7 @@ A modern, feature-rich desktop chatbot application powered by Azure OpenAI. Buil
 ![Flask](https://img.shields.io/badge/Flask-3.0+-green.svg)
 ![Azure OpenAI](https://img.shields.io/badge/Azure-OpenAI-orange.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00?style=flat&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/JustInCache)
 
 ## 🎬 Demo
 
