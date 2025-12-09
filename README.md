@@ -9,11 +9,9 @@ A modern, feature-rich desktop chatbot application powered by Azure OpenAI. Buil
 
 ## 🎬 Demo
 
-https://github.com/user-attachments/assets/media/recordings/recording.mov
-
-<video src="media/recordings/recording.mov" width="100%" controls autoplay muted loop>
-  Your browser does not support the video tag.
-</video>
+<p align="center">
+  <img src="media/recordings/demo.gif" alt="Demo" width="100%">
+</p>
 
 > *See the chatbot in action - modern UI, real-time responses, and session management*
 
@@ -150,7 +148,6 @@ Click the **"Clear Chat"** button in the header to clear messages in the current
 
 | Issue | Solution |
 |-------|----------|
-| **Port 5000 in use** | The app uses port 8080 by default. If still blocked, change the port in `main.py` |
 | **403 Forbidden** | Usually a browser cache issue. Try hard refresh (Cmd+Shift+R) or different browser |
 | **Request Timeout** | Check your Azure OpenAI deployment name is correct. Timeout is set to 60 seconds |
 | **DeploymentNotFound** | Your `AZURE_OPENAI_DEPLOYMENT` value doesn't match any deployment in Azure |
