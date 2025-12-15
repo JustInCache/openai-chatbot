@@ -1,23 +1,36 @@
 from flask import Flask, render_template, request, jsonify
-from openai import AzureOpenAI
+from openai import AzureOpenAI, OpenAI
 import httpx
-from config import (
-    AZURE_OPENAI_ENDPOINT,
-    AZURE_OPENAI_KEY,
-    AZURE_OPENAI_DEPLOYMENT,
-    AZURE_OPENAI_API_VERSION
-)
+from config import USE_AZURE
 import webbrowser
 import threading
 
 app = Flask(__name__)
 
-client = AzureOpenAI(
-    azure_endpoint=AZURE_OPENAI_ENDPOINT,
-    api_key=AZURE_OPENAI_KEY,
-    api_version=AZURE_OPENAI_API_VERSION,
-    timeout=httpx.Timeout(60.0, connect=10.0)
-)
+# Initialize the appropriate client based on configuration
+if USE_AZURE:
+    from config import (
+        AZURE_OPENAI_ENDPOINT,
+        AZURE_OPENAI_KEY,
+        AZURE_OPENAI_DEPLOYMENT,
+        AZURE_OPENAI_API_VERSION
+    )
+    client = AzureOpenAI(
+        azure_endpoint=AZURE_OPENAI_ENDPOINT,
+        api_key=AZURE_OPENAI_KEY,
+        api_version=AZURE_OPENAI_API_VERSION,
+        timeout=httpx.Timeout(60.0, connect=10.0)
+    )
+    MODEL = AZURE_OPENAI_DEPLOYMENT
+    print("✓ Using Azure OpenAI")
+else:
+    from config import OPENAI_API_KEY, OPENAI_MODEL
+    client = OpenAI(
+        api_key=OPENAI_API_KEY,
+        timeout=httpx.Timeout(60.0, connect=10.0)
+    )
+    MODEL = OPENAI_MODEL
+    print(f"✓ Using OpenAI (ChatGPT) with model: {MODEL}")
 
 conversation_history = [
     {"role": "system", "content": "You are a helpful AI assistant. Be concise and clear in your responses."}
@@ -47,7 +60,7 @@ def chat():
     
     try:
         response = client.chat.completions.create(
-            model=AZURE_OPENAI_DEPLOYMENT,
+            model=MODEL,
             messages=conversation_history,
             max_tokens=1000,
             temperature=0.7
@@ -63,9 +76,11 @@ def chat():
         print(f"Error: {error_msg}")
         
         if "DeploymentNotFound" in error_msg or "404" in error_msg:
-            error_msg = f"Deployment '{AZURE_OPENAI_DEPLOYMENT}' not found. Check your deployment name in config.py"
-        elif "401" in error_msg:
-            error_msg = "Invalid API key. Check your AZURE_OPENAI_KEY in config.py"
+            error_msg = f"Model/Deployment '{MODEL}' not found. Check your config.py"
+        elif "401" in error_msg or "Unauthorized" in error_msg:
+            error_msg = "Invalid API key. Check your API key in config.py"
+        elif "insufficient_quota" in error_msg:
+            error_msg = "API quota exceeded. Check your OpenAI billing at platform.openai.com"
         elif "timeout" in error_msg.lower():
             error_msg = "Request timed out. Check your network connection."
             

@@ -66,10 +66,24 @@ A modern, feature-rich desktop chatbot application powered by Azure OpenAI. Buil
 
 ## Configuration
 
-Edit the `config.py` file with your Azure OpenAI credentials:
+This app supports **both Azure OpenAI and regular OpenAI (ChatGPT)**. Edit `config.py` to configure your preferred provider.
+
+### Option 1: Regular OpenAI (ChatGPT)
 
 ```python
-# Azure OpenAI Configuration
+USE_AZURE = False  # Use regular OpenAI
+
+OPENAI_API_KEY = "sk-your-api-key-here"
+OPENAI_MODEL = "gpt-4o"  # Options: gpt-4o, gpt-4o-mini, gpt-4-turbo, gpt-3.5-turbo
+```
+
+Get your API key from: [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
+
+### Option 2: Azure OpenAI
+
+```python
+USE_AZURE = True  # Use Azure OpenAI
+
 AZURE_OPENAI_ENDPOINT = "https://your-resource-name.openai.azure.com/"
 AZURE_OPENAI_KEY = "your-azure-openai-key-here"
 AZURE_OPENAI_DEPLOYMENT = "your-deployment-name"  # NOT the model name
