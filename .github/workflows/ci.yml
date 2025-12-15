@@ -68,10 +68,17 @@ jobs:
         run: |
           cat > config.py << 'EOF'
           # Test configuration
+          USE_AZURE = True
+          
+          # Azure OpenAI Settings
           AZURE_OPENAI_ENDPOINT = "https://test.openai.azure.com/"
           AZURE_OPENAI_KEY = "test-key"
           AZURE_OPENAI_DEPLOYMENT = "test-deployment"
           AZURE_OPENAI_API_VERSION = "2024-02-15-preview"
+          
+          # Regular OpenAI Settings
+          OPENAI_API_KEY = "sk-test-key"
+          OPENAI_MODEL = "gpt-4o"
           EOF
 
       - name: Verify imports
